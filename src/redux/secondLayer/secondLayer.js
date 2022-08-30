@@ -42,13 +42,13 @@ const secondLayerReducer = (state = initialMarket, action) => {
         market: [],
       };
 
-    // case ADD_BOOK:
-    //   return {
-    //     ...state,
-    //     loading: true,
-    //     error: action.error,
-    //     books: action.book,
-    //   };
+      // case ADD_BOOK:
+      //   return {
+      //     ...state,
+      //     loading: true,
+      //     error: action.error,
+      //     books: action.book,
+      //   };
 
     // case DELETE_BOOK:
     //   return {

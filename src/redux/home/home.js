@@ -1,12 +1,13 @@
 import axios from 'axios';
-import { API_MARKET } from '../../api/Api';
+import API_MARKET from '../../api/Api';
 
 const FETCH_MARKET_BEGINS = 'financialApp/market/FETCH_MARKET_BEGINS';
 const FETCH_MARKET_SUCCESS = 'financialApp/market/FETCH_MARKET_SUCCESS';
 const FETCH_MARKET_FAILURE = 'financialApp/market/FETCH_MARKET_FAILURE';
+const FETCH_MARKET_DETAIL_SUCCESS = 'financialApp/market/FETCH_MARKET_DETAIL_SUCCESS';
 
 const initialMarket = {
-  market: [],
+  cryptocurrencies: [],
   loading: false,
   error: null,
 };
@@ -26,7 +27,7 @@ const homeReducer = (state = initialMarket, action) => {
       return {
         ...state,
         loading: false,
-        market: action.market,
+        cryptocurrencies: action.organizedCrpto,
       };
 
     case FETCH_MARKET_FAILURE:
@@ -37,7 +38,16 @@ const homeReducer = (state = initialMarket, action) => {
         ...state,
         loading: false,
         error: action.error,
-        market: [],
+        cyptocurrencies: [],
+      };
+
+    case FETCH_MARKET_DETAIL_SUCCESS:
+
+      return {
+        ...state,
+        loading: false,
+        error: action.error,
+        cyptocurrencies: action.detail,
       };
 
     default:
@@ -48,9 +58,36 @@ export const loadingMarket = () => ({
   type: FETCH_MARKET_BEGINS,
 });
 
-export const fetchMarket = (market) => ({
-  type: FETCH_MARKET_SUCCESS,
-  market,
+export const fetchMarket = (crptoData) => {
+  const organizedCrpto = [];
+  crptoData.forEach((obj) => {
+    const newCrpto = {
+      id: obj.id,
+      name: obj.name,
+      rank: obj.rank,
+      symbol: obj.symbol,
+      price: obj.price_usd,
+      cap: obj.market_cap_usd,
+      tsupply: obj.tsupply,
+      csupply: obj.csupply,
+      volume: obj.volume24,
+      percent_change_1h: obj.percent_change_1h,
+      percent_change_7d: obj.percent_change_7d,
+      percent_change_24h: obj.percent_change_24h,
+    };
+    organizedCrpto.push(newCrpto);
+  });
+
+  return {
+    type: FETCH_MARKET_SUCCESS,
+    organizedCrpto,
+  };
+};
+
+export const detailPage = (id) => ({
+  type: FETCH_MARKET_DETAIL_SUCCESS,
+  detail,
+  id,
 });
 
 export const fetchMarketFailure = (error) => ({
@@ -58,20 +95,27 @@ export const fetchMarketFailure = (error) => ({
   error,
 });
 
-export const GetMarketFromApi = () => async (dispatch) => {
-  dispatch(loadingBooks());
+export const getDetailPage = (id) => async (dispatch) => {
   try {
-    const booksObj = await axios.get(API_MARKET);
-    console.log(booksObj);
-    // const newBooks = [];
-    // if (booksObj.data) {
-    //   Object.keys(booksObj.data).forEach((itemKeys) => {
-    //     const data = booksObj.data[itemKeys];
-    //     const books = Object.assign({}, ...data, { item_id: itemKeys });
-    //     newBooks.push(books);
-    //   });
-    //   dispatch(fetchBook(newBooks));
-    // }
+    const resultDet = await axios.get(`https://api.coinlore.net/api/ticker/?id=${id}`);
+    const resultMar = await axios.get(`https://api.coinlore.net/api/coin/markets/?id=${id}`);
+    const resultSoc = await axios.get(`https://api.coinlore.net/api/coin/social_stats/?id=${id}`);
+
+    console.log(resultDet.data, 'resultDet');
+    console.log(resultMar.data, 'resultMar');
+    console.log(resultSoc.data, 'resultSoc');
+    // dispatch(detailPage(id));
+  } catch (error) {
+    dispatch(fetchMarketFailure(error));
+  }
+};
+
+export const GetMarketFromApi = () => async (dispatch) => {
+  dispatch(loadingMarket());
+  try {
+    const { data } = await axios.get(API_MARKET);
+    const crptoArray = data.data;
+    dispatch(fetchMarket(crptoArray));
   } catch (error) {
     dispatch(fetchMarketFailure(error));
   }

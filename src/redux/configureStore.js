@@ -4,7 +4,7 @@ import firstLayerReducer from './firstLayer/firstLayer';
 import secondLayerReducer from './secondLayer/secondLayer';
 
 const rootReducer = combineReducers({
-  market: homeReducer,
+  home: homeReducer,
   firstLayer: firstLayerReducer,
   secondLayer: secondLayerReducer,
 });

@@ -1,1 +1,2 @@
-export const API_MARKET = '';
+const API_MARKET = 'https://api.coinlore.net/api/tickers/?start=0&limit=100';
+export default API_MARKET;
