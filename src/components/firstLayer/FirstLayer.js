@@ -8,12 +8,12 @@ const {cryptoDetail, loading, error } = useSelector((state) => state.home);
 const navigate = useNavigate();
 
 useEffect(() => {
-  if(!cryptoDetail) navigate('/');
+  if(!cryptoDetail) return navigate('/');
 }, [])
 
 const backToHome = () => {
   navigate('/', {replace: true});  
-  };
+  };  
 
 const displayDetail = () => {
   if (error) {
@@ -43,21 +43,21 @@ const displayDetail = () => {
   }
 
   return (
-    <>
-    <div><span className='display-home-bakarrow align-left' onClick={backToHome}>&#8592;</span></div>
+    <div  className='first-layer-cont'>
+    <div><span className='display-home-bakarrow' onClick={backToHome}>&#8592;</span>
+    </div>
+      
     <div>
-      {cryptoDetail.map(( {id, redActiveUsers, redSubsribers,twiFollowers, twiStatus}) => (
-        <div key={id}>
-          <div>
-                <span>{redActiveUsers}</span>
-                <span>{redSubsribers}</span>
-                <span>{twiFollowers}</span>
-                <span>{twiStatus}</span>
-              </div>
+      {cryptoDetail.map(( {id, name, symbol, redActiveUsers, redSubsribers,twiFollowers, twiStatus}) => (
+        <div key={id} className='first-layer-grid align-center'>                
+                <div><span>Reddit {symbol} active users:</span><br /><br /><span>{Math.round(redActiveUsers)}</span></div>
+                <div><span>Reddit {symbol} subscribers:</span><br /><br /><span>{redSubsribers}</span></div>
+                <div><span>Twitter  {symbol} followers:</span><br /><br /><span>{twiFollowers}</span></div>
+                <div><span>Twitter {symbol} status:</span><br /><br /><span>{twiStatus}</span></div>          
         </div>
       ))}
     </div>
-    </>
+    </div>
   );
 };
 

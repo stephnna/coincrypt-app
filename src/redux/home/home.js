@@ -113,11 +113,13 @@ export const fetchMarket = (crptoData) => {
 };
 
 
-export const detailPage = (detailData, id) => {
+export const detailPage = (detailData, id, name, symbol) => {
   const organizedCrptoDetail = [];
   detailData.forEach((obj) => {
     const newDetail = {
       id: id,
+      name: name,
+      symbol: symbol,
       redActiveUsers: obj.avg_active_users,
       redSubsribers: obj.subscribers,
       twiFollowers: obj.followers_count,
@@ -128,7 +130,7 @@ export const detailPage = (detailData, id) => {
   return {
     type: FETCH_MARKET_DETAIL_SUCCESS,
     organizedCrptoDetail,
-    id,
+    id,        
   };
 };
 
@@ -137,7 +139,7 @@ export const fetchMarketFailure = (error) => ({
   error,
 });
 
-export const getDetailPage = (id) => async (dispatch) => {
+export const getDetailPage = (id, name, symbol) => async (dispatch) => {
   dispatch(loadingMarket());
   try {
     const resultDet = await axios.get(`https://api.coinlore.net/api/ticker/?id=${id}`);
@@ -146,7 +148,7 @@ export const getDetailPage = (id) => async (dispatch) => {
 
 const {reddit: redditObj, twitter: twitterObj} = socials;
 const combinedDetail = [{avg_active_users: redditObj.avg_active_users, subscribers: redditObj.subscribers, followers_count: twitterObj.followers_count, status_count: twitterObj.status_count}];
-    dispatch(detailPage(combinedDetail, id));
+    dispatch(detailPage(combinedDetail, id, name, symbol));
   } catch (error) {
     dispatch(fetchMarketFailure(error));
   }

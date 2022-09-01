@@ -1,14 +1,10 @@
-import { Link } from 'react-router-dom';
+import logo from '../assets/img/logo.png';
 
 const Navigation = () => (
   <header>
-    <nav>
-      <h1>Coincrypt Market</h1>
-      <ul>
-        <li><Link to="/">Home</Link></li>
-        <li><Link to="/first-layer">First Layer</Link></li>
-        <li><Link to="/second-layer">Second Layer</Link></li>
-      </ul>
+    <nav className='nav'>      
+      <div className='nav-logo-container'><img   className='nav-logo' src={logo} alt="Logo" /></div>
+      <div><h1>Coincrypt Market</h1></div>          
     </nav>
   </header>
 );

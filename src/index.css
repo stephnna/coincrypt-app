@@ -1,5 +1,5 @@
 :root {
-  --general: #f635f0;
+  --general: #e8109d;
   --primary: white;
   --secondary: #a70c80;
   --tertiary: #d0039d;
@@ -13,10 +13,14 @@
 }
 
 body {  
-  background-color: var(--general);
   color: var(--primary);
 }
 
+@media only screen and (max-width: 768px) {
+  .dekstop-home-forarrow {
+    display: none;
+  }
+}
 .align-center {
   text-align: center;
 }
@@ -30,16 +34,40 @@ body {
 }
 
 .badge-red{
-  background-color: red;
+  background-color: red
+}
+.badge-red, .badge-green {
+  border-radius: 4px;
 }
 
 .badge-green {
-  background-color: green;
+  background-color: green 
 }
 
+.nav {
+  background-color: var(--secondary);
+  padding-top: 8px;
+  padding-bottom: 32px;
+  display: flex;
+  align-items: center;
+  padding-left: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.nav-logo {
+  height: 50px;
+  width: 50px; 
+}
+
+.nav-logo-container {
+  margin-right: 32px;
+}
 
 .display-global-cont {
-  border: 2px solid red;    
+  background-color: var(--general); 
+  padding-top: 16px;
+  padding-bottom: 16px;  
 }
 
 .display-global-key, .display-home-key {
@@ -49,6 +77,8 @@ body {
 
 .display-global-starts {
   background-color: var(--secondary);
+  padding-top: 4px;
+  padding-bottom: 4px;  
 }
 
 .home-grid {
@@ -71,7 +101,7 @@ body {
   margin-left: 5px;
 }
 
-.display-home-forarrow, .display-home-bakarrow {
+.display-home-forarrow, .display-home-bakarrow {  
   margin-top: 5px;
   font-size: 16px;
   color: var(--primary);
@@ -83,25 +113,59 @@ body {
   display: inline-block;
 }
 
+/* First Page Styling */
+.first-layer-cont {
+  background-color: var(--general);
+}
 
+.first-layer-grid{
+  display: grid;
+  grid-template-columns: auto auto;  
+  }
+
+  .first-layer-grid > div{
+    background-color: var(--tertiary);
+    margin: 3px;
+    padding-top: 100px;
+    padding-bottom: 100px;    
+  }
+
+  .first-layer-coname{
+    background-color: var(--primary);
+    text-align: center;
+    color: var(--general);
+  }
 
 /* Desktop Version */
 
 @media only screen and (min-width: 768px) { 
   
-  .display-home-cont br, .display-home-cont .align-right, .display-home-cont .display-home-key {
+  .display-home-cont br, 
+  .display-home-cont .align-right, 
+  .display-home-cont 
+  .display-home-key {
     display: none;
   }
 
-  .align-center, .align-right{
-    text-align: none;
+  .dekstop-home-forarrow {
+    margin-top: 5px;
+    font-size: 16px;
+    color: var(--primary);
+    cursor: pointer;
+    height: 25px;
+    width: 25px;
+    border: 2px solid var(--primary);
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 5px;
   }
 
-  .desktop-home{
+  .desktop-home {
     display: flex;
     justify-content: space-between;
     align-items: center;
-  }
+    padding: 0 8px;   
+  }  
 
   .home-grid-item {
     padding-top: 20px;
@@ -112,24 +176,5 @@ body {
     color: black;
     font-size: 20px;
     font-weight: bold;
-  }
-
-  .display-home-name{
-    border:  2px solid red;
-  }
-
-  .desktop-home {
-    border:  2px solid rgb(0, 255, 17);
-
-  }
-
-  .align-center{
-    border:  2px solid rgb(0, 255, 17);
-
-  }
-      
+  }    
 }
-
-
-
-

@@ -36,7 +36,7 @@ const Home = () => {
         ))}
       </div>     
       <div className='home-grid'>
-        {cryptocurrencies.map((crypto, index) => (          
+        {cryptocurrencies.map((crypto) => (          
           <div className='home-grid-item'>
           <DisplayHome
             id={crypto.id}

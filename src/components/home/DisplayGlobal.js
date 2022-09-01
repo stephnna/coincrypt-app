@@ -5,6 +5,8 @@ const DisplayGlobal = (props) => {
     totalCoin, totalCap, totalCapChange, avgChange, totalVolume,
   } = props;
 
+  const badgeStyles = `${totalCapChange <= 0 ? 'badge-red' : 'badge-green'}`;
+
    // 
 
   
@@ -18,15 +20,15 @@ const DisplayGlobal = (props) => {
     <>  
       <div className='display-global-cont'>
         <div><span className='display-global-key'>COIN COUNT:</span><span> {totalCoin}</span></div><br />        
-        <div><span className='display-global-key'>TOTAL MARKET CAP:</span><span> {totalCap}</span></div><br /> 
-        <div><span className='display-global-key'>TOTAL CAP CHANGE:</span><span> {totalCapChange}</span></div><br /> 
-        <div><span className='display-global-key'>AVERAGE CHANGE:</span><span> {avgChange}</span></div><br /> 
-        <div><span className='display-global-key'>24H VOLUME:</span><span> {totalVolume}</span></div>        
+        <div><span className='display-global-key'>TOTAL MARKET CAP:</span><span> ${Math.round(totalCap)}</span></div><br /> 
+        <div><span className='display-global-key'>TOTAL CAP CHANGE: </span><span className={badgeStyles}> ${Math.round(totalCapChange)}</span></div><br /> 
+        <div><span className='display-global-key'>AVERAGE CHANGE:</span><span>  ${Math.round(avgChange)}</span></div><br /> 
+        <div><span className='display-global-key'>24H VOLUME:</span><span>  ${Math.round(totalVolume)}</span></div>        
       </div>
-      <div className='display-global-starts'>STATS BY CRYPTOCURRENCIES</div>
-      <div className='desktop-home black-color'><span>Rank</span><span>Name</span><span>Price</span><span>1h Change</span>
-     <span>24h change</span><span>7d change</span><span>Volume</span>
-     <span>Total supply</span><span>Circulating supply</span><span>Cap</span><span> </span>
+      <div className='display-global-starts align-center'>STATS BY CRYPTOCURRENCIES</div>
+      <div className='desktop-home black-color'><span>Rank</span><span>Name</span><span>Price</span><span>1h%</span>
+     <span>24h%</span><span>7d%</span><span>Volume</span>
+     <span>Total supply</span><span>Circulating supply</span><span>Cap</span><span>More</span>
      </div>
       </>   
   );
