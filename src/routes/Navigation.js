@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 const Navigation = () => (
   <header>
     <nav>
-      <h1>Financial Sentiments App</h1>
+      <h1>Coincrypt Market</h1>
       <ul>
         <li><Link to="/">Home</Link></li>
         <li><Link to="/first-layer">First Layer</Link></li>

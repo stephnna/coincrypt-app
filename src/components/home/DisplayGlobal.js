@@ -23,7 +23,11 @@ const DisplayGlobal = (props) => {
         <div><span className='display-global-key'>AVERAGE CHANGE:</span><span> {avgChange}</span></div><br /> 
         <div><span className='display-global-key'>24H VOLUME:</span><span> {totalVolume}</span></div>        
       </div>
-      <div className='display-global-starts'>STATS BY CRYPTOCURRENCIES</div> 
+      <div className='display-global-starts'>STATS BY CRYPTOCURRENCIES</div>
+      <div className='desktop-home black-color'><span>Rank</span><span>Name</span><span>Price</span><span>1h Change</span>
+     <span>24h change</span><span>7d change</span><span>Volume</span>
+     <span>Total supply</span><span>Circulating supply</span><span>Cap</span><span> </span>
+     </div>
       </>   
   );
 };

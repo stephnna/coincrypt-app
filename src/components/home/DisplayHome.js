@@ -23,24 +23,25 @@ const DisplayHome = (props) => {
   // const memberBadge = reserved ? 'Active Member' : 'NOT A MEMBER';
 
   // const btnStyles = `btn-mission ${reserved ? 'btn-mission-sec' : ''}`;
-  // const badgeStyles = `badge ${reserved ? 'badge-secondary' : 'badge-primary'}`;
+   const badgeStyles = `${percent1H <= 0 ||  percent24H <= 0 || percent7D <= 0? 'badge-red' : 'badge-green'}`;
 
   return ( 
   <>  
-    <div>
-      <div className='align-right'><span className='display-home-circle align-center' onClick={viewDetail}>&#8594;</span></div>
+    <div className='display-home-cont'>
+    <div className='align-right'><span className='display-home-forarrow align-center' onClick={viewDetail}>&#8594;</span></div>
+     <div className='desktop-home'>     
       <div className='align-center'><span className='display-home-key'>RANK:</span><span> {rank}</span></div><br />
-      <div><span className='display-home-key'>NAME:</span><span> {name} ({symbol})</span></div><br />
+      <div className='display-home-name'><span className='display-home-key'>NAME:</span><span> {name} ({symbol})</span></div><br />
       <div><span className='display-home-key'>PRICE:</span><span> {price}</span></div><br />
-      <div><span className='display-home-key'>1H % CHANGE:</span><span> {percent1H}</span></div><br />
-      <div><span className='display-home-key'>24H % CHANGE:</span><span> {percent24H}</span></div><br />
-      <div><span className='display-home-key'>7D % CHANGE:</span><span> {percent7D}</span></div><br />
-      <div><span className='display-home-key'>CAP:</span><span> {cap}</span></div><br />
+      <div><span className='display-home-key'>1H % CHANGE:</span><span  className={badgeStyles}> {percent1H}%</span></div><br />
+      <div><span className='display-home-key'>24H % CHANGE:</span><span className={badgeStyles}> {percent24H}%</span></div><br />
+      <div><span className='display-home-key'>7D % CHANGE:</span><span  className={badgeStyles}> {percent7D}%</span></div><br />
       <div><span className='display-home-key'>VOLUME:</span><span> {volume}</span></div><br />
       <div><span className='display-home-key'>TOTAL SUPPLY:</span><span> {tSupply}</span></div><br />
       <div><span className='display-home-key'>CIRCULATING SUPPLY:</span><span> {cSupply}</span></div><br />
-      <div><span className='display-home-key'>CAP:</span><span> {cap}</span></div><br />
-      <div><span className='display-home-key'>TOTAL SUPPLY:</span><span> {tSupply}</span></div><br />               
+      <div><span className='display-home-key'>CAP:</span><span> {cap}</span></div><br />      
+      <div><span className='display-home-forarrow align-center' onClick={viewDetail}>&#8594;</span></div>
+      </div>
     </div>     
   </>     
   );

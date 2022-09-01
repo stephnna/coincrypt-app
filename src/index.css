@@ -1,16 +1,8 @@
 :root {
-  --general: #c80c99;
+  --general: #f635f0;
   --primary: white;
   --secondary: #a70c80;
-  --tertiary: #f136c3;
-}
-
-.align-center {
-  text-align: center;
-}
-
-.align-right{
-  text-align: right;
+  --tertiary: #d0039d;
 }
 
 * {
@@ -23,6 +15,26 @@
 body {  
   background-color: var(--general);
   color: var(--primary);
+}
+
+.align-center {
+  text-align: center;
+}
+
+.align-right{
+  text-align: right;
+}
+
+.align-left {
+  text-align: left;
+}
+
+.badge-red{
+  background-color: red;
+}
+
+.badge-green {
+  background-color: green;
 }
 
 
@@ -41,30 +53,82 @@ body {
 
 .home-grid {
   display: grid;
-  grid-template-columns: auto auto;   
+  grid-template-columns: auto;   
 }
 
-.home-grid-item {
-  margin: 4px;
-  background-color: var(--tertiary);
-   /* background: repeating-linear-gradient(#ddd 0 35px, transparent 35px 70px);   */
+.home-grid-item {  
+  background-color: var(--tertiary); 
 }
 
-.home-grid-item:nth-child(even) {background: green}
+.home-grid-item:nth-child(even) {background: var(--secondary)};
+.home-grid-item:nth-child(odd) {background: var(--tertiary)};
 
-.display-home-circle {
+.display-home-forarrow {  
+  margin-right: 5px;  
+}
+
+.display-home-bakarrow {
+  margin-left: 5px;
+}
+
+.display-home-forarrow, .display-home-bakarrow {
   margin-top: 5px;
-  margin-right: 5px;
+  font-size: 16px;
+  color: var(--primary);
   cursor: pointer;
   height: 25px;
   width: 25px;
   border: 2px solid var(--primary);
   border-radius: 50%;
   display: inline-block;
-  font-size: 16px;
-  color: var(--primary);
 }
 
+
+
+/* Desktop Version */
+
+@media only screen and (min-width: 768px) { 
+  
+  .display-home-cont br, .display-home-cont .align-right, .display-home-cont .display-home-key {
+    display: none;
+  }
+
+  .align-center, .align-right{
+    text-align: none;
+  }
+
+  .desktop-home{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .home-grid-item {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+
+  .black-color {
+    color: black;
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  .display-home-name{
+    border:  2px solid red;
+  }
+
+  .desktop-home {
+    border:  2px solid rgb(0, 255, 17);
+
+  }
+
+  .align-center{
+    border:  2px solid rgb(0, 255, 17);
+
+  }
+      
+}
 
 
 

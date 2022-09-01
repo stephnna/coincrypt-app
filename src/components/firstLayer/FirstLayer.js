@@ -11,6 +11,10 @@ useEffect(() => {
   if(!cryptoDetail) navigate('/');
 }, [])
 
+const backToHome = () => {
+  navigate('/', {replace: true});  
+  };
+
 const displayDetail = () => {
   if (error) {
     return (
@@ -39,6 +43,8 @@ const displayDetail = () => {
   }
 
   return (
+    <>
+    <div><span className='display-home-bakarrow align-left' onClick={backToHome}>&#8592;</span></div>
     <div>
       {cryptoDetail.map(( {id, redActiveUsers, redSubsribers,twiFollowers, twiStatus}) => (
         <div key={id}>
@@ -51,6 +57,7 @@ const displayDetail = () => {
         </div>
       ))}
     </div>
+    </>
   );
 };
 
