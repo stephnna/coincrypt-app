@@ -1,1 +1,0 @@
-# financial-sentiments-app

@@ -1,6 +1,5 @@
 import axios from 'axios';
-import API_MARKET from '../../api/Api';
-import { API_GLOBAL } from '../../api/Api';
+import API_MARKET, { API_GLOBAL } from '../../api/Api';
 
 const FETCH_MARKET_BEGINS = 'financialApp/market/FETCH_MARKET_BEGINS';
 const FETCH_MARKET_SUCCESS = 'financialApp/market/FETCH_MARKET_SUCCESS';
@@ -30,20 +29,20 @@ const homeReducer = (state = initialMarket, action) => {
       return {
         ...state,
         loading: false,
-        cryptocurrencies: action.organizedCrpto,               
+        cryptocurrencies: action.organizedCrpto,
       };
 
-      case FETCH_GLOBAL_SUCCESS:
-        return {
-          ...state,
-          loading: false, 
-          globalData: action.organizedGlobal,         
-        };
-
-      case FETCH_MARKET_DETAIL_SUCCESS:
-        return {
+    case FETCH_GLOBAL_SUCCESS:
+      return {
         ...state,
-        loading: false,                
+        loading: false,
+        globalData: action.organizedGlobal,
+      };
+
+    case FETCH_MARKET_DETAIL_SUCCESS:
+      return {
+        ...state,
+        loading: false,
         cryptoDetail: action.organizedCrptoDetail,
       };
 
@@ -56,7 +55,7 @@ const homeReducer = (state = initialMarket, action) => {
         loading: false,
         error: action.error,
         cyptocurrencies: [],
-      };     
+      };
 
     default:
       return state;
@@ -72,7 +71,7 @@ export const fetchGlobal = (globalData) => {
     const newGlobal = {
       id: 0,
       totalCoin: obj.coins_count,
-      totalCap:  obj.total_mcap,
+      totalCap: obj.total_mcap,
       totalCapChange: obj.mcap_change,
       avgChange: obj.avg_change_percent,
       totalVolume: obj.total_volume,
@@ -84,7 +83,7 @@ export const fetchGlobal = (globalData) => {
     type: FETCH_GLOBAL_SUCCESS,
     organizedGlobal,
   };
-}
+};
 
 export const fetchMarket = (crptoData) => {
   const organizedCrpto = [];
@@ -112,25 +111,23 @@ export const fetchMarket = (crptoData) => {
   };
 };
 
-
 export const detailPage = (detailData, id, name, symbol) => {
   const organizedCrptoDetail = [];
   detailData.forEach((obj) => {
     const newDetail = {
-      id: id,
-      name: name,
-      symbol: symbol,
+      id,
+      symbol,
       redActiveUsers: obj.avg_active_users,
       redSubsribers: obj.subscribers,
       twiFollowers: obj.followers_count,
-      twiStatus: obj.status_count,      
+      twiStatus: obj.status_count,
     };
     organizedCrptoDetail.push(newDetail);
   });
   return {
     type: FETCH_MARKET_DETAIL_SUCCESS,
     organizedCrptoDetail,
-    id,        
+    id,
   };
 };
 
@@ -142,47 +139,41 @@ export const fetchMarketFailure = (error) => ({
 export const getDetailPage = (id, name, symbol) => async (dispatch) => {
   dispatch(loadingMarket());
   try {
-    const resultDet = await axios.get(`https://api.coinlore.net/api/ticker/?id=${id}`);
-    const resultMar = await axios.get(`https://api.coinlore.net/api/coin/markets/?id=${id}`);
+    // const resultDet = await axios.get(`https://api.coinlore.net/api/ticker/?id=${id}`);
+    // const resultMar = await axios.get(`https://api.coinlore.net/api/coin/markets/?id=${id}`);
     const { data: socials } = await axios.get(`https://api.coinlore.net/api/coin/social_stats/?id=${id}`);
 
-const {reddit: redditObj, twitter: twitterObj} = socials;
-const combinedDetail = [{avg_active_users: redditObj.avg_active_users, subscribers: redditObj.subscribers, followers_count: twitterObj.followers_count, status_count: twitterObj.status_count}];
+    const { reddit: redditObj, twitter: twitterObj } = socials;
+    const combinedDetail = [{
+      avg_active_users: redditObj.avg_active_users,
+      subscribers: redditObj.subscribers,
+      followers_count: twitterObj.followers_count,
+      status_count: twitterObj.status_count,
+    }];
     dispatch(detailPage(combinedDetail, id, name, symbol));
   } catch (error) {
     dispatch(fetchMarketFailure(error));
   }
 };
 
-// export const GetGlobalApi = () => async (dispatch) => {
-//   dispatch(loadingMarket());
-//   try {
-//     const { data } = await axios.get(API_MARKET);    
-//     const crptoArray = data.data;
-//     dispatch(fetchMarket(crptoArray));
-//   } catch (error) {
-//     dispatch(fetchMarketFailure(error));
-//   }
-// };
-
 const tryMarketApi = async (dispatch) => {
-    const { data } = await axios.get(API_MARKET);    
-    const crptoMarket = data.data;
-    dispatch(fetchMarket(crptoMarket));
-}
+  const { data } = await axios.get(API_MARKET);
+  const crptoMarket = data.data;
+  dispatch(fetchMarket(crptoMarket));
+};
 
 const tryGlobalApi = async (dispatch) => {
   const { data } = await axios.get(API_GLOBAL);
-  const crptoGlobal = data;  
+  const crptoGlobal = data;
   dispatch(fetchGlobal(crptoGlobal));
-}
-
+};
 
 export const GetMarketFromApi = () => async (dispatch) => {
   dispatch(loadingMarket());
   try {
-    tryGlobalApi(dispatch) && tryMarketApi(dispatch);     
-  }catch (error) {
+    tryGlobalApi(dispatch);
+    tryMarketApi(dispatch);
+  } catch (error) {
     dispatch(fetchMarketFailure(error));
   }
 };

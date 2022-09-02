@@ -4,7 +4,6 @@
 // import FirstLayer from './FirstLayer';
 // import de
 
-
 // let isInitial = true;
 // const Home = () => {
 //   const { cryptocurrencies, loading, error } = useSelector((state) => state.home);
@@ -14,7 +13,7 @@
 //       dispatch();
 //       isInitial = false;
 //     }
-//   }, []);  
+//   }, []);
 
 //   const displayMarket = () => {
 //     if (error) {
