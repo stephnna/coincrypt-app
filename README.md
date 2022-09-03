@@ -15,7 +15,7 @@ Coincrypt Market
 
 ## Live Demo
 
-View live [here]()
+View live [here](https://coincript.netlify.app/)
 ## Getting Started
 
 To get a local copy up and running follow these simple example steps.
