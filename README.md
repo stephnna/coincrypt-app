@@ -13,7 +13,8 @@ Coincrypt Market
 
 ![screenshot](./public/screenshot.png)
 
-## Live Demo [here](https://www.loom.com/share/3dbeaf05e5ff4845bdca72ec03b6207a)
+## Description video 
+[here](https://www.loom.com/share/3dbeaf05e5ff4845bdca72ec03b6207a)
 
 View live [here](https://coincript.netlify.app/)
 
