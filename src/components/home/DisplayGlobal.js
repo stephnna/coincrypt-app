@@ -7,14 +7,6 @@ const DisplayGlobal = (props) => {
 
   const badgeStyles = `${totalCapChange <= 0 ? 'badge-red' : 'badge-green'}`;
 
-  //
-
-  // const btnBadge = reserved ? 'Leave Mission' : 'Join Mission';
-  // const memberBadge = reserved ? 'Active Member' : 'NOT A MEMBER';
-
-  // const btnStyles = `btn-mission ${reserved ? 'btn-mission-sec' : ''}`;
-  // const badgeStyles = `badge ${reserved ? 'badge-secondary' : 'badge-primary'}`;
-
   return (
     <>
       <div className="display-global-cont">
