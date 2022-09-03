@@ -9,14 +9,13 @@ Coincrypt Market
 - React testing Library
 - Jest
 
-## Screenshot
+## Project description 
 
 ![screenshot](./public/screenshot.png)
 
-## Description video 
-[here](https://www.loom.com/share/3dbeaf05e5ff4845bdca72ec03b6207a)
+[video description](https://www.loom.com/share/3dbeaf05e5ff4845bdca72ec03b6207a)
 
-View live [here](https://coincript.netlify.app/)
+[View live](https://coincript.netlify.app/)
 
 ## Getting Started
 
