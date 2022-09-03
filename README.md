@@ -11,7 +11,7 @@ Coincrypt Market
 
 ## Project view 
 
-- ![screenshot](./public/screenshot.png)
+![screenshot](./public/screenshot.png)
 
 - [video description](https://www.loom.com/share/3dbeaf05e5ff4845bdca72ec03b6207a)
 
