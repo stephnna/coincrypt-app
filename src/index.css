@@ -1,0 +1,177 @@
+:root {
+  --general: #e8109d;
+  --primary: white;
+  --secondary: #a70c80;
+  --tertiary: #d0039d;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+body {
+  color: var(--primary);
+}
+
+@media only screen and (max-width: 768px) {
+  .dekstop-home-forarrow,
+  .desktop-home-crypto-header {
+    display: none;
+  }
+}
+
+.align-center {
+  text-align: center;
+}
+
+.align-right {
+  text-align: right;
+}
+
+.align-left {
+  text-align: left;
+}
+
+.badge-red {
+  background-color: red;
+}
+
+.badge-red,
+.badge-green {
+  border-radius: 4px;
+}
+
+.badge-green {
+  background-color: green;
+}
+
+.nav {
+  background-color: var(--secondary);
+  padding-top: 8px;
+  padding-bottom: 32px;
+  display: flex;
+  align-items: center;
+  padding-left: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.nav-logo {
+  height: 50px;
+  width: 50px;
+}
+
+.nav-logo-container {
+  margin-right: 32px;
+}
+
+.display-global-cont {
+  background-color: var(--general);
+  padding-top: 16px;
+  padding-bottom: 16px;
+  padding-left: 8px;
+}
+
+.display-global-key,
+.display-home-key {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.display-global-starts {
+  background-color: var(--secondary);
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.home-grid {
+  display: grid;
+  grid-template-columns: auto;
+}
+
+.home-grid-item {
+  background-color: var(--tertiary);
+}
+
+.home-grid-item:nth-child(even) { background: var(--secondary); }
+.home-grid-item:nth-child(odd) { background: var(--tertiary); }
+
+.display-home-forarrow {
+  margin-right: 5px;
+}
+
+.display-home-bakarrow {
+  margin-left: 5px;
+}
+
+.display-home-forarrow,
+.display-home-bakarrow {
+  font-size: 16px;
+  cursor: pointer;
+  border: 2px solid var(--primary);
+  border-radius: 50%;
+  margin-right: 5px;
+}
+
+/* First Page Styling */
+.first-layer-cont {
+  background-color: var(--general);
+}
+
+.first-layer-grid {
+  display: grid;
+  grid-template-columns: auto auto;
+}
+
+.first-layer-grid > div {
+  background-color: var(--tertiary);
+  margin: 3px;
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+
+.first-layer-coname {
+  background-color: var(--primary);
+  text-align: center;
+  color: var(--general);
+}
+
+/* Desktop Version */
+
+@media only screen and (min-width: 768px) {
+  .display-home-cont br,
+  .display-home-cont .align-right,
+  .display-home-cont .display-home-key {
+    display: none;
+  }
+
+  .dekstop-home-forarrow {
+    font-size: 16px;
+    cursor: pointer;
+    border: 2px solid var(--primary);
+    border-radius: 50%;
+    margin-right: 5px;
+  }
+
+  .desktop-home-crypto-header,
+  .desktop-home-crypto {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 8px;
+  }
+
+  .home-grid-item {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+
+  .black-color {
+    color: black;
+    font-size: 20px;
+    font-weight: bold;
+  }
+}
