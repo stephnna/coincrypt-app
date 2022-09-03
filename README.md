@@ -13,9 +13,10 @@ Coincrypt Market
 
 ![screenshot](./public/screenshot.png)
 
-## Live Demo
+## Live Demo [here](https://www.loom.com/share/3dbeaf05e5ff4845bdca72ec03b6207a)
 
 View live [here](https://coincript.netlify.app/)
+
 ## Getting Started
 
 To get a local copy up and running follow these simple example steps.
