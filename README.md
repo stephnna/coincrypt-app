@@ -9,7 +9,7 @@ Coincrypt Market
 - React testing Library
 - Jest
 
-## Project view 
+## Project views
 
 ![screenshot](./public/screenshot.png)
 
