@@ -17,7 +17,8 @@ body {
 }
 
 @media only screen and (max-width: 768px) {
-  .dekstop-home-forarrow {
+  .dekstop-home-forarrow,
+  .desktop-home-crypto-header {
     display: none;
   }
 }
@@ -71,6 +72,7 @@ body {
   background-color: var(--general);
   padding-top: 16px;
   padding-bottom: 16px;
+  padding-left: 8px;
 }
 
 .display-global-key,
@@ -106,16 +108,12 @@ body {
 }
 
 .display-home-forarrow,
-.display-home-bakarrow { 
-  margin-top: 5px;
+.display-home-bakarrow {
   font-size: 16px;
-  color: var(--primary);
   cursor: pointer;
-  height: 25px;
-  width: 25px;
   border: 2px solid var(--primary);
   border-radius: 50%;
-  display: inline-block;
+  margin-right: 5px;
 }
 
 
@@ -155,19 +153,15 @@ body {
   }
 
   .dekstop-home-forarrow {
-    margin-top: 5px;
     font-size: 16px;
-    color: var(--primary);
     cursor: pointer;
-    height: 25px;
-    width: 25px;
     border: 2px solid var(--primary);
     border-radius: 50%;
-    display: inline-block;
     margin-right: 5px;
   }
 
-  .desktop-home {
+  .desktop-home-crypto-header,
+  .desktop-home-crypto {
     display: flex;
     justify-content: space-between;
     align-items: center;

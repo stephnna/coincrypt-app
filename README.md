@@ -9,6 +9,10 @@ Coincrypt Market
 - React testing Library
 -Jest
 
+## Screenshot
+
+![screenshot](./public/screenshot.png)
+
 ## Live Demo
 
 View live [here]()

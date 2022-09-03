@@ -24,9 +24,9 @@ const DisplayHome = (props) => {
     <>
       <div className="display-home-cont">
         <div className="align-right"><button type="button" className="display-home-forarrow align-center" onClick={viewDetail} onKeyDown={viewDetail}>&#8594;</button></div>
-        <div className="desktop-home">
+        <div className="desktop-home-crypto">
           <div>
-            <span className="display-home-key">RANK:</span>
+            <span className="display-home-key">Rank: </span>
             <span>
               {' '}
               {rank}
@@ -34,7 +34,7 @@ const DisplayHome = (props) => {
           </div>
           <br />
           <div>
-            <span className="display-home-key">NAME:</span>
+            <span className="display-home-key">Name: </span>
             <span>
               {' '}
               {name}
@@ -45,7 +45,7 @@ const DisplayHome = (props) => {
           </div>
           <br />
           <div>
-            <span className="display-home-key">PRICE:</span>
+            <span className="display-home-key">Price: </span>
             <span>
               {' '}
               $
@@ -54,7 +54,7 @@ const DisplayHome = (props) => {
           </div>
           <br />
           <div>
-            <span className="display-home-key">1H % CHANGE:</span>
+            <span className="display-home-key">1h%: </span>
             <span className={badgeStyles}>
               {' '}
               {percent1H}
@@ -63,7 +63,7 @@ const DisplayHome = (props) => {
           </div>
           <br />
           <div>
-            <span className="display-home-key">24H % CHANGE:</span>
+            <span className="display-home-key">24h%: </span>
             <span className={badgeStyles}>
               {' '}
               {percent24H}
@@ -72,7 +72,7 @@ const DisplayHome = (props) => {
           </div>
           <br />
           <div>
-            <span className="display-home-key">7D % CHANGE:</span>
+            <span className="display-home-key">7d%: </span>
             <span className={badgeStyles}>
               {' '}
               {percent7D}
@@ -81,7 +81,7 @@ const DisplayHome = (props) => {
           </div>
           <br />
           <div>
-            <span className="display-home-key">VOLUME:</span>
+            <span className="display-home-key">Volume:</span>
             <span>
               {' '}
               $
@@ -90,7 +90,7 @@ const DisplayHome = (props) => {
           </div>
           <br />
           <div>
-            <span className="display-home-key">TOTAL SUPPLY:</span>
+            <span className="display-home-key">Total:</span>
             <span>
               {' '}
               {Math.round(tSupply)}
@@ -101,7 +101,7 @@ const DisplayHome = (props) => {
           </div>
           <br />
           <div>
-            <span className="display-home-key">CIRCULATING SUPPLY:</span>
+            <span className="display-home-key">Circulating supply:</span>
             <span>
               {' '}
               {Math.round(cSupply)}
@@ -112,7 +112,7 @@ const DisplayHome = (props) => {
           </div>
           <br />
           <div>
-            <span className="display-home-key">CAP:</span>
+            <span className="display-home-key">Cap:</span>
             <span>
               {' '}
               $
@@ -127,6 +127,10 @@ const DisplayHome = (props) => {
   );
 };
 
+DisplayHome.defaultProps = {
+  tSupply: null,
+};
+
 DisplayHome.propTypes = {
   id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
@@ -134,7 +138,7 @@ DisplayHome.propTypes = {
   symbol: PropTypes.string.isRequired,
   price: PropTypes.string.isRequired,
   cap: PropTypes.string.isRequired,
-  tSupply: PropTypes.string.isRequired,
+  tSupply: PropTypes.string,
   cSupply: PropTypes.string.isRequired,
   volume: PropTypes.number.isRequired,
   percent1H: PropTypes.string.isRequired,

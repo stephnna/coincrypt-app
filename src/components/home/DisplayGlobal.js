@@ -63,7 +63,7 @@ const DisplayGlobal = (props) => {
         </div>
       </div>
       <div className="display-global-starts align-center">STATS BY CRYPTOCURRENCIES</div>
-      <div className="desktop-home black-color">
+      <div className="desktop-home-crypto-header black-color">
         <span>Rank</span>
         <span>Name</span>
         <span>Price</span>
