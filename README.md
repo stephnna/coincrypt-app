@@ -7,7 +7,7 @@ Coincrypt Market
 - React
 - Redux
 - React testing Library
--Jest
+- Jest
 
 ## Screenshot
 
